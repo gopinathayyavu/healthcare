@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiddos Spark – Premium Playschool in Salem | Big Dreams Begin With a Little Spark</title>
+  <meta name="description" content="Kiddos Spark is a joyful playschool in Salem, Tamil Nadu. Play-based learning, caring environment, creative activities. Enquire for admission." />
+  <meta property="og:title" content="Kiddos Spark – Playschool in Salem" />
+  <meta property="og:description" content="Where little minds begin to shine. Explore our programs, activities, and safe learning spaces." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kiddosspark.example.com" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=1200&h=630&fit=crop" />
+  <link rel="canonical" href="https://kiddosspark.example.com" />
+  <!-- Tailwind + Fonts + Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Custom Config & Styles -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'playful': ['"Baloo 2"', 'cursive'],
+            'body': ['Nunito', 'sans-serif'],
+          },
+          colors: {
+            'spark': {
+              'yellow': '#F9D56E',
+              'orange': '#F9A26C',
+              'blue': '#6EC1E4',
+              'green': '#A8D8B9',
+              'pink': '#F7B7C7',
+              'purple': '#B5A7E1',
+            }
+          },
+          animation: {
+            'float-slow': 'float 8s ease-in-out infinite',
+            'float-medium': 'float 6s ease-in-out infinite',
+            'float-fast': 'float 4s ease-in-out infinite',
+            'sparkle': 'sparkle 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            sparkle: {
+              '0%, 100%': { opacity: 0.3, transform: 'scale(0.8)' },
+              '50%': { opacity: 1, transform: 'scale(1.2)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ===== BASE & ACCESSIBILITY ===== */
+    * { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; color: #2D3A4B; background-color: #FFFBF5; }
+    h1, h2, h3, h4 { font-family: 'Baloo 2', cursive; }
+    .focus-ring:focus-visible { outline: 3px solid #F9A26C; outline-offset: 3px; border-radius: 8px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    
+    /* ===== DECORATIVE SHAPES ===== */
+    .deco-cloud {
+      background: white;
+      border-radius: 100px;
+      box-shadow: 0 8px 20px rgba(110, 193, 228, 0.15);
+    }
+    .deco-cloud::before, .deco-cloud::after {
+      content: ''; position: absolute; background: white; border-radius: 50%;
+    }
+    .deco-cloud::before { width: 50%; height: 100%; top: -40%; left: 15%; }
+    .deco-cloud::after { width: 40%; height: 80%; top: -30%; right: 15%; }
+    .deco-blob {
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+    .deco-star {
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    
+    /* ===== SCROLL REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.95); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-scale.active { opacity: 1; transform: scale(1); }
+    
+    /* ===== NAV & FOOTER ===== */
+    .nav-scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.06); background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); }
+    .footer-wave { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z' fill='%23F9F1E7'/%3E%3C/svg%3E") repeat-x bottom; background-size: cover; }
+    
+    /* ===== CARDS ===== */
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 20px 30px -10px rgba(249, 162, 108, 0.25); }
+    .program-icon { transition: transform 0.3s ease; }
+    .card-hover:hover .program-icon { transform: translateY(-4px) scale(1.1); }
+    
+    /* ===== GALLERY ===== */
+    .gallery-item { transition: transform 0.3s ease, opacity 0.3s ease; cursor: pointer; }
+    .gallery-item:hover { transform: scale(1.02); }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 80vh; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    
+    /* ===== FLOATING WHATSAPP ===== */
+    .float-wa { position: fixed; bottom: 24px; right: 24px; z-index: 999; }
+    @media (max-width: 768px) {
+      .float-wa { bottom: 80px; right: 16px; }
+    }
+    
+    /* ===== MOBILE STICKY BAR ===== */
+    .mobile-cta-bar { display: none; }
+    @media (max-width: 768px) {
+      .mobile-cta-bar { display: flex; position: fixed; bottom: 0; left: 0; right: 0; background: white; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 998; padding: 6px 12px; justify-content: space-around; border-top: 1px solid #f0e8dc; }
+      .mobile-cta-bar a { display: flex; flex-direction: column; align-items: center; font-size: 10px; color: #2D3A4B; text-decoration: none; padding: 6px 8px; border-radius: 12px; transition: background 0.2s; }
+      .mobile-cta-bar a i { font-size: 18px; margin-bottom: 2px; color: #F9A26C; }
+      .mobile-cta-bar a:active { background: #FFF3E9; }
+      body { padding-bottom: 68px; }
+    }
+    
+    /* ===== TIMELINE ===== */
+    .timeline-item::after { content: ''; position: absolute; left: 50%; top: 100%; height: 40px; width: 3px; background: #F9D56E; transform: translateX(-50%); }
+    .timeline-item:last-child::after { display: none; }
+    
+    /* ===== FEE TABLE ===== */
+    .fee-table th { background: #FDF2E6; }
+    .fee-table tr:nth-child(even) { background: #FFFBF5; }
+    
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .reveal, .reveal-scale { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body class="font-body text-gray-800 antialiased">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 focus-ring" aria-label="Kiddos Spark Home">
+          <span class="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-spark-yellow to-spark-orange rounded-2xl shadow-md">
+            <i class="fas fa-star text-white text-lg md:text-xl"></i>
+            <span class="absolute -top-1 -right-1 w-3 h-3 bg-spark-blue rounded-full animate-sparkle"></span>
+          </span>
+          <span class="font-playful font-bold text-xl md:text-2xl text-gray-800">Kiddos <span class="text-spark-orange">Spark</span></span>
+        </a>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-1 lg:gap-2">
+          <a href="index.html" class="px-3 py-2 text-sm font-semibold rounded-full hover:bg-spark-yellow/20 transition focus-ring">Home</a>
+          <a href="about.html" class="px-3 py-2 text-sm font-semibold rounded-full hover:bg-spark-yellow/20 transition focus-ring">About</a>
+          <a href="programs.html" class="px-3 py-2 text-sm font-semibold rounded-full hover:bg-spark-yellow/20 transition focus-ring">Programs</a>
+          <a href="activities.html" class="px-3 py-2 text-sm font-semibold rounded-full hover:bg-spark-yellow/20 transition focus-ring">Activities</a>
+          <a href="facilities.html" class="px-3 py-2 text-sm font-semibold rounded-full hover:bg-spark-yellow/20 transition focus-ring">Facilities</a>
+          <a href="gallery.html" class="px-3 py-2 text-sm font-semibold rounded-full hover:bg-spark-yellow/20 transition focus-ring">Gallery</a>
+          <a href="fees.html" class="px-3 py-2 text-sm font-semibold rounded-full hover:bg-spark-yellow/20 transition focus-ring">Fees</a>
+          <a href="contact.html" class="px-3 py-2 text-sm font-semibold rounded-full hover:bg-spark-yellow/20 transition focus-ring">Contact</a>
+          <a href="admissions.html" class="ml-2 px-5 py-2.5 bg-spark-orange text-white text-sm font-bold rounded-full shadow-md hover:bg-orange-500 transition focus-ring">Admission Enquiry</a>
+        </div>
+        <!-- Mobile Hamburger -->
+        <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-spark-yellow/20 focus-ring" aria-label="Toggle menu" aria-expanded="false">
+          <i class="fas fa-bars text-2xl text-gray-700"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 pb-6 pt-2 shadow-lg">
+      <div class="flex flex-col gap-1">
+        <a href="index.html" class="px-4 py-3 text-sm font-semibold rounded-xl hover:bg-spark-yellow/20 transition">Home</a>
+        <a href="about.html" class="px-4 py-3 text-sm font-semibold rounded-xl hover:bg-spark-yellow/20 transition">About</a>
+        <a href="programs.html" class="px-4 py-3 text-sm font-semibold rounded-xl hover:bg-spark-yellow/20 transition">Programs</a>
+        <a href="activities.html" class="px-4 py-3 text-sm font-semibold rounded-xl hover:bg-spark-yellow/20 transition">Activities</a>
+        <a href="facilities.html" class="px-4 py-3 text-sm font-semibold rounded-xl hover:bg-spark-yellow/20 transition">Facilities</a>
+        <a href="gallery.html" class="px-4 py-3 text-sm font-semibold rounded-xl hover:bg-spark-yellow/20 transition">Gallery</a>
+        <a href="fees.html" class="px-4 py-3 text-sm font-semibold rounded-xl hover:bg-spark-yellow/20 transition">Fees</a>
+        <a href="contact.html" class="px-4 py-3 text-sm font-semibold rounded-xl hover:bg-spark-yellow/20 transition">Contact</a>
+        <a href="admissions.html" class="mt-2 px-4 py-3 bg-spark-orange text-white text-sm font-bold rounded-xl text-center shadow-md hover:bg-orange-500 transition">Admission Enquiry</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <header class="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
+    <!-- Decorative background blobs -->
+    <div class="absolute top-20 -left-20 w-72 h-72 bg-spark-yellow/20 rounded-full blur-3xl" aria-hidden="true"></div>
+    <div class="absolute bottom-0 -right-20 w-96 h-96 bg-spark-blue/15 rounded-full blur-3xl" aria-hidden="true"></div>
+    <div class="absolute top-40 right-1/4 w-24 h-24 bg-spark-pink/20 rounded-full blur-2xl" aria-hidden="true"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <!-- Left Content -->
+        <div class="reveal">
+          <span class="inline-block px-4 py-1.5 bg-spark-yellow/30 text-spark-orange font-bold text-xs tracking-wider rounded-full mb-4 uppercase">Where Little Minds Begin to Shine</span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-playful font-extrabold leading-tight text-gray-800">
+            Big Dreams Begin<br />With a <span class="text-spark-orange relative">Little Spark
+              <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10C50 2 150 2 198 10" stroke="#F9D56E" stroke-width="4" stroke-linecap="round"/></svg>
+            </span>
+          </h1>
+          <p class="mt-6 text-lg text-gray-600 max-w-lg leading-relaxed">A joyful early learning environment where children explore, create, play and grow with confidence.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="programs.html" class="px-7 py-3.5 bg-spark-orange text-white font-bold rounded-full shadow-lg hover:bg-orange-500 transition transform hover:scale-105 focus-ring">Explore Our Programs <i class="fas fa-arrow-right ml-2"></i></a>
+            <a href="admissions.html" class="px-7 py-3.5 bg-white text-spark-orange font-bold rounded-full shadow-md border-2 border-spark-orange hover:bg-spark-orange/5 transition transform hover:scale-105 focus-ring">Enquire for Admission</a>
+          </div>
+          <div class="mt-8 flex items-center gap-6 text-sm text-gray-500">
+            <span class="flex items-center gap-2"><i class="fas fa-shield-heart text-spark-orange"></i> Safe & Caring</span>
+            <span class="flex items-center gap-2"><i class="fas fa-child text-spark-blue"></i> Play-Based</span>
+            <span class="flex items-center gap-2"><i class="fas fa-palette text-spark-pink"></i> Creative</span>
+          </div>
+        </div>
+        <!-- Right Visual -->
+        <div class="relative reveal-scale">
+          <div class="relative w-full aspect-square max-w-md mx-auto">
+            <!-- Main image card -->
+            <div class="absolute inset-0 bg-gradient-to-br from-spark-yellow/40 to-spark-blue/30 rounded-[3rem] rotate-6 shadow-xl"></div>
+            <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=600&fit=crop" alt="Children playing and learning at Kiddos Spark playschool in Salem" class="relative rounded-[3rem] w-full h-full object-cover shadow-2xl -rotate-3 transition-transform hover:rotate-0 duration-500" loading="eager" />
+            <!-- Floating decorative elements -->
+            <div class="absolute -top-6 -right-4 w-16 h-16 bg-spark-yellow rounded-2xl flex items-center justify-center shadow-lg animate-float-slow" aria-hidden="true"><i class="fas fa-book text-white text-2xl"></i></div>
+            <div class="absolute -bottom-4 -left-6 w-14 h-14 bg-spark-blue rounded-full flex items-center justify-center shadow-lg animate-float-medium" aria-hidden="true"><i class="fas fa-pencil text-white text-xl"></i></div>
+            <div class="absolute top-1/2 -right-8 w-12 h-12 bg-spark-pink rounded-xl flex items-center justify-center shadow-lg animate-float-fast" aria-hidden="true"><i class="fas fa-star text-white text-lg"></i></div>
+            <div class="absolute top-10 -left-4 w-10 h-10 bg-spark-green rounded-full shadow-lg animate-float-slow" aria-hidden="true"></div>
+            <!-- Fallback illustration (always visible behind image if it fails) -->
+            <div class="absolute inset-0 flex items-center justify-center bg-spark-yellow/10 rounded-[3rem] -z-10">
+              <i class="fas fa-school text-8xl text-spark-orange/30"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== TRUST / QUICK INFO ==================== -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="reveal text-center p-6 rounded-3xl bg-spark-yellow/10 hover:bg-spark-yellow/20 transition card-hover">
+          <div class="w-14 h-14 mx-auto bg-spark-yellow rounded-2xl flex items-center justify-center mb-3 shadow-sm"><i class="fas fa-puzzle-piece text-white text-2xl"></i></div>
+          <h3 class="font-playful font-bold text-lg">Play-Based Learning</h3>
+          <p class="text-sm text-gray-500 mt-1">Joyful experiences that build foundational skills</p>
+        </div>
+        <div class="reveal text-center p-6 rounded-3xl bg-spark-blue/10 hover:bg-spark-blue/20 transition card-hover">
+          <div class="w-14 h-14 mx-auto bg-spark-blue rounded-2xl flex items-center justify-center mb-3 shadow-sm"><i class="fas fa-heart text-white text-2xl"></i></div>
+          <h3 class="font-playful font-bold text-lg">Caring Environment</h3>
+          <p class="text-sm text-gray-500 mt-1">Nurturing teachers and a safe space to grow</p>
+        </div>
+        <div class="reveal text-center p-6 rounded-3xl bg-spark-pink/10 hover:bg-spark-pink/20 transition card-hover">
+          <div class="w-14 h-14 mx-auto bg-spark-pink rounded-2xl flex items-center justify-center mb-3 shadow-sm"><i class="fas fa-paint-brush text-white text-2xl"></i></div>
+          <h3 class="font-playful font-bold text-lg">Creative Activities</h3>
+          <p class="text-sm text-gray-500 mt-1">Art, music, storytelling and hands-on discovery</p>
+        </div>
+        <div class="reveal text-center p-6 rounded-3xl bg-spark-green/10 hover:bg-spark-green/20 transition card-hover">
+          <div class="w-14 h-14 mx-auto bg-spark-green rounded-2xl flex items-center justify-center mb-3 shadow-sm"><i class="fas fa-comments text-white text-2xl"></i></div>
+          <h3 class="font-playful font-bold text-lg">Parent Communication</h3>
+          <p class="text-sm text-gray-500 mt-1">Regular updates and open conversations</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHY KIDDOS SPARK ==================== -->
+  <section class="py-16 md:py-24 bg-[#FFFBF5] relative overflow-hidden">
+    <div class="absolute top-10 right-0 w-40 h-40 bg-spark-yellow/10 rounded-full blur-3xl" aria-hidden="true"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+        <span class="text-spark-orange font-bold text-sm tracking-wider uppercase">Why Kiddos Spark?</span>
+        <h2 class="text-3xl md:text-4xl font-playful font-extrabold mt-2">A Place Where Curiosity Leads the Way</h2>
+        <p class="mt-4 text-gray-600 leading-relaxed">Every child learns differently. Our approach encourages children to explore their interests, express themselves and develop essential skills through joyful experiences.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-spark-yellow rounded-xl flex items-center justify-center mb-4"><i class="fas fa-person-running text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-xl">Learn Through Play</h3>
+          <p class="text-gray-500 text-sm mt-2">Purposeful play that builds problem-solving, creativity and social skills.</p>
+        </div>
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-spark-pink rounded-xl flex items-center justify-center mb-4"><i class="fas fa-palette text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-xl">Creative Expression</h3>
+          <p class="text-gray-500 text-sm mt-2">Art, music and movement to help children express their unique ideas.</p>
+        </div>
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-spark-blue rounded-xl flex items-center justify-center mb-4"><i class="fas fa-people-group text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-xl">Social Development</h3>
+          <p class="text-gray-500 text-sm mt-2">Sharing, taking turns and building friendships in a caring environment.</p>
+        </div>
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-spark-green rounded-xl flex items-center justify-center mb-4"><i class="fas fa-star text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-xl">Confidence Building</h3>
+          <p class="text-gray-500 text-sm mt-2">Encouragement and positive reinforcement to help every child shine.</p>
+        </div>
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-spark-purple rounded-xl flex items-center justify-center mb-4"><i class="fas fa-book-open text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-xl">Early Literacy</h3>
+          <p class="text-gray-500 text-sm mt-2">Stories, rhymes and pre-reading activities that spark a love for language.</p>
+        </div>
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-spark-orange rounded-xl flex items-center justify-center mb-4"><i class="fas fa-leaf text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-xl">Discovery & Exploration</h3>
+          <p class="text-gray-500 text-sm mt-2">Hands-on experiences with nature, numbers and the world around us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROGRAMS PREVIEW ==================== -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 reveal">
+        <div>
+          <span class="text-spark-orange font-bold text-sm tracking-wider uppercase">Our Programs</span>
+          <h2 class="text-3xl md:text-4xl font-playful font-extrabold mt-2">Programs Designed for Every Stage</h2>
+          <p class="text-gray-500 mt-3 max-w-xl">Sample program information — customizable to match the school's actual offerings.</p>
+        </div>
+        <a href="programs.html" class="mt-4 md:mt-0 px-6 py-3 bg-spark-orange/10 text-spark-orange font-bold rounded-full hover:bg-spark-orange/20 transition focus-ring">View All Programs <i class="fas fa-arrow-right ml-1"></i></a>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="reveal-scale bg-[#FFFBF5] rounded-3xl p-6 border border-gray-100 card-hover">
+          <div class="w-14 h-14 bg-spark-yellow rounded-2xl flex items-center justify-center mb-4 program-icon"><i class="fas fa-child text-white text-2xl"></i></div>
+          <h3 class="font-playful font-bold text-xl">Play Group</h3>
+          <p class="text-xs text-spark-orange font-semibold mt-1">Age 1.5 – 2.5 years (editable)</p>
+          <p class="text-gray-500 text-sm mt-3">Sensory play, social interaction, and gentle introduction to structured learning.</p>
+          <a href="programs.html" class="inline-block mt-4 text-spark-orange font-bold text-sm hover:underline focus-ring">Learn More <i class="fas fa-chevron-right text-xs"></i></a>
+        </div>
+        <div class="reveal-scale bg-[#FFFBF5] rounded-3xl p-6 border border-gray-100 card-hover">
+          <div class="w-14 h-14 bg-spark-blue rounded-2xl flex items-center justify-center mb-4 program-icon"><i class="fas fa-puzzle-piece text-white text-2xl"></i></div>
+          <h3 class="font-playful font-bold text-xl">Nursery</h3>
+          <p class="text-xs text-spark-orange font-semibold mt-1">Age 2.5 – 3.5 years (editable)</p>
+          <p class="text-gray-500 text-sm mt-3">Language development, creative play, and early numeracy concepts.</p>
+          <a href="programs.html" class="inline-block mt-4 text-spark-orange font-bold text-sm hover:underline focus-ring">Learn More <i class="fas fa-chevron-right text-xs"></i></a>
+        </div>
+        <div class="reveal-scale bg-[#FFFBF5] rounded-3xl p-6 border border-gray-100 card-hover">
+          <div class="w-14 h-14 bg-spark-pink rounded-2xl flex items-center justify-center mb-4 program-icon"><i class="fas fa-graduation-cap text-white text-2xl"></i></div>
+          <h3 class="font-playful font-bold text-xl">LKG</h3>
+          <p class="text-xs text-spark-orange font-semibold mt-1">Age 3.5 – 4.5 years (editable)</p>
+          <p class="text-gray-500 text-sm mt-3">Pre-reading, pre-writing, and structured activities for school readiness.</p>
+          <a href="programs.html" class="inline-block mt-4 text-spark-orange font-bold text-sm hover:underline focus-ring">Learn More <i class="fas fa-chevron-right text-xs"></i></a>
+        </div>
+        <div class="reveal-scale bg-[#FFFBF5] rounded-3xl p-6 border border-gray-100 card-hover">
+          <div class="w-14 h-14 bg-spark-green rounded-2xl flex items-center justify-center mb-4 program-icon"><i class="fas fa-school text-white text-2xl"></i></div>
+          <h3 class="font-playful font-bold text-xl">UKG</h3>
+          <p class="text-xs text-spark-orange font-semibold mt-1">Age 4.5 – 5.5 years (editable)</p>
+          <p class="text-gray-500 text-sm mt-3">Advanced early learning, independence, and confidence for primary school.</p>
+          <a href="programs.html" class="inline-block mt-4 text-spark-orange font-bold text-sm hover:underline focus-ring">Learn More <i class="fas fa-chevron-right text-xs"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LEARNING THROUGH PLAY ==================== -->
+  <section class="py-16 md:py-24 bg-[#FFFBF5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+        <span class="text-spark-orange font-bold text-sm tracking-wider uppercase">Learning Through Play</span>
+        <h2 class="text-3xl md:text-4xl font-playful font-extrabold mt-2">Every Day is an Adventure</h2>
+        <p class="mt-4 text-gray-600">From art to music to outdoor exploration — our activities are designed to ignite curiosity and joy.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="reveal bg-white rounded-2xl p-5 text-center shadow-sm card-hover">
+          <div class="w-12 h-12 mx-auto bg-spark-yellow rounded-xl flex items-center justify-center mb-3"><i class="fas fa-paint-brush text-white text-xl"></i></div>
+          <h4 class="font-playful font-bold">Art & Craft</h4>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-5 text-center shadow-sm card-hover">
+          <div class="w-12 h-12 mx-auto bg-spark-blue rounded-xl flex items-center justify-center mb-3"><i class="fas fa-music text-white text-xl"></i></div>
+          <h4 class="font-playful font-bold">Music & Movement</h4>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-5 text-center shadow-sm card-hover">
+          <div class="w-12 h-12 mx-auto bg-spark-pink rounded-xl flex items-center justify-center mb-3"><i class="fas fa-book-open text-white text-xl"></i></div>
+          <h4 class="font-playful font-bold">Storytelling</h4>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-5 text-center shadow-sm card-hover">
+          <div class="w-12 h-12 mx-auto bg-spark-green rounded-xl flex items-center justify-center mb-3"><i class="fas fa-calculator text-white text-xl"></i></div>
+          <h4 class="font-playful font-bold">Numbers & Counting</h4>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-5 text-center shadow-sm card-hover">
+          <div class="w-12 h-12 mx-auto bg-spark-purple rounded-xl flex items-center justify-center mb-3"><i class="fas fa-tree text-white text-xl"></i></div>
+          <h4 class="font-playful font-bold">Nature Exploration</h4>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-5 text-center shadow-sm card-hover">
+          <div class="w-12 h-12 mx-auto bg-spark-orange rounded-xl flex items-center justify-center mb-3"><i class="fas fa-person-running text-white text-xl"></i></div>
+          <h4 class="font-playful font-bold">Outdoor Play</h4>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-5 text-center shadow-sm card-hover">
+          <div class="w-12 h-12 mx-auto bg-spark-yellow rounded-xl flex items-center justify-center mb-3"><i class="fas fa-cubes text-white text-xl"></i></div>
+          <h4 class="font-playful font-bold">Building & Blocks</h4>
+        </div>
+        <div class="reveal bg-white rounded-2xl p-5 text-center shadow-sm card-hover">
+          <div class="w-12 h-12 mx-auto bg-spark-blue rounded-xl flex items-center justify-center mb-3"><i class="fas fa-hand-sparkles text-white text-xl"></i></div>
+          <h4 class="font-playful font-bold">Sensory Play</h4>
+        </div>
+      </div>
+      <div class="text-center mt-10 reveal">
+        <a href="activities.html" class="px-7 py-3 bg-spark-orange text-white font-bold rounded-full shadow-md hover:bg-orange-500 transition focus-ring">See All Activities <i class="fas fa-arrow-right ml-1"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FACILITIES PREVIEW ==================== -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <span class="text-spark-orange font-bold text-sm tracking-wider uppercase">Sample Facility Showcase</span>
+          <h2 class="text-3xl md:text-4xl font-playful font-extrabold mt-2">Spaces Designed for Little Explorers</h2>
+          <p class="mt-4 text-gray-600 leading-relaxed">Our facilities are designed to support safe, joyful and meaningful learning experiences. (Sample showcase — update based on actual school facilities.)</p>
+          <ul class="mt-6 space-y-3">
+            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-spark-green mt-1"></i><span><strong>Safe Learning Spaces</strong> — child-friendly furniture and secure environment</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-spark-green mt-1"></i><span><strong>Activity Areas</strong> — dedicated zones for art, music and group play</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-spark-green mt-1"></i><span><strong>Reading Corner</strong> — cozy space with age-appropriate books</span></li>
+            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-spark-green mt-1"></i><span><strong>Play Area</strong> — outdoor and indoor play for physical development</span></li>
+          </ul>
+          <a href="facilities.html" class="inline-block mt-8 px-7 py-3 bg-spark-blue text-white font-bold rounded-full shadow-md hover:bg-blue-500 transition focus-ring">View Facilities <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+        <div class="reveal-scale relative">
+          <div class="grid grid-cols-2 gap-4">
+            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=400&fit=crop" alt="Sample classroom space at Kiddos Spark" class="rounded-3xl w-full h-48 object-cover shadow-md" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=400&fit=crop" alt="Sample activity area for children" class="rounded-3xl w-full h-48 object-cover shadow-md mt-8" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1564429238817-393bd4286b2d?w=400&h=400&fit=crop" alt="Sample reading corner" class="rounded-3xl w-full h-48 object-cover shadow-md -mt-4" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=400&h=400&fit=crop" alt="Sample play area" class="rounded-3xl w-full h-48 object-cover shadow-md mt-4" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PARENT TRUST ==================== -->
+  <section class="py-16 md:py-24 bg-[#FFFBF5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+        <span class="text-spark-orange font-bold text-sm tracking-wider uppercase">For Parents</span>
+        <h2 class="text-3xl md:text-4xl font-playful font-extrabold mt-2">Trusted by Families in Salem</h2>
+        <p class="mt-4 text-gray-600">We believe in open communication, safety, and nurturing every child's unique potential.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm card-hover">
+          <div class="w-12 h-12 bg-spark-blue rounded-xl flex items-center justify-center mb-4"><i class="fas fa-shield-heart text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-lg">Safety First</h3>
+          <p class="text-gray-500 text-sm mt-2">Secure premises and caring supervision at all times.</p>
+        </div>
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm card-hover">
+          <div class="w-12 h-12 bg-spark-green rounded-xl flex items-center justify-center mb-4"><i class="fas fa-comments text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-lg">Open Communication</h3>
+          <p class="text-gray-500 text-sm mt-2">Regular updates and easy access to teachers.</p>
+        </div>
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm card-hover">
+          <div class="w-12 h-12 bg-spark-yellow rounded-xl flex items-center justify-center mb-4"><i class="fas fa-user-group text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-lg">Individual Attention</h3>
+          <p class="text-gray-500 text-sm mt-2">Small group sizes to support each child's pace.</p>
+        </div>
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm card-hover">
+          <div class="w-12 h-12 bg-spark-pink rounded-xl flex items-center justify-center mb-4"><i class="fas fa-puzzle-piece text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-lg">Engaging Activities</h3>
+          <p class="text-gray-500 text-sm mt-2">A balanced mix of learning, play and creativity.</p>
+        </div>
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm card-hover">
+          <div class="w-12 h-12 bg-spark-purple rounded-xl flex items-center justify-center mb-4"><i class="fas fa-seedling text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-lg">Holistic Development</h3>
+          <p class="text-gray-500 text-sm mt-2">Focus on social, emotional, physical and cognitive growth.</p>
+        </div>
+        <div class="reveal bg-white p-7 rounded-3xl shadow-sm card-hover">
+          <div class="w-12 h-12 bg-spark-orange rounded-xl flex items-center justify-center mb-4"><i class="fas fa-calendar-check text-white text-xl"></i></div>
+          <h3 class="font-playful font-bold text-lg">Easy Admissions</h3>
+          <p class="text-gray-500 text-sm mt-2">Simple enquiry process and school visit options.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIALS ==================== -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+        <span class="text-spark-orange font-bold text-sm tracking-wider uppercase">Sample Testimonials</span>
+        <h2 class="text-3xl md:text-4xl font-playful font-extrabold mt-2">What Parents Might Say</h2>
+        <p class="mt-4 text-gray-500 text-sm">These are demo testimonials — replace with real parent reviews.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="reveal bg-[#FFFBF5] p-7 rounded-3xl border border-gray-100">
+          <div class="flex text-spark-yellow mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="text-gray-600 italic text-sm">"Sample parent testimonial — replace with an actual parent review. My child loves going to Kiddos Spark every day!"</p>
+          <p class="mt-4 font-bold text-sm">— Sample Parent</p>
+        </div>
+        <div class="reveal bg-[#FFFBF5] p-7 rounded-3xl border border-gray-100">
+          <div class="flex text-spark-yellow mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="text-gray-600 italic text-sm">"Sample parent testimonial — replace with an actual parent review. The teachers are caring and the activities are wonderful."</p>
+          <p class="mt-4 font-bold text-sm">— Sample Parent</p>
+        </div>
+        <div class="reveal bg-[#FFFBF5] p-7 rounded-3xl border border-gray-100">
+          <div class="flex text-spark-yellow mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="text-gray-600 italic text-sm">"Sample parent testimonial — replace with an actual parent review. We've seen so much growth in our little one."</p>
+          <p class="mt-4 font-bold text-sm">— Sample Parent</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ADMISSION CTA ==================== -->
+  <section class="py-16 md:py-24 bg-gradient-to-br from-spark-yellow/30 via-spark-orange/20 to-spark-pink/20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+      <h2 class="text-3xl md:text-5xl font-playful font-extrabold text-gray-800">Ready to See Your Child Spark?</h2>
+      <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Give your child a joyful start to learning. Enquire today or give us a call.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="admissions.html" class="px-8 py-4 bg-spark-orange text-white font-bold rounded-full shadow-lg hover:bg-orange-500 transition transform hover:scale-105 focus-ring">Enquire Now <i class="fas fa-arrow-right ml-2"></i></a>
+        <a href="tel:09790228201" class="px-8 py-4 bg-white text-spark-orange font-bold rounded-full shadow-md border-2 border-spark-orange hover:bg-spark-orange/5 transition transform hover:scale-105 focus-ring"><i class="fas fa-phone mr-2"></i>Call Kiddos Spark</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FINAL CTA ==================== -->
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+      <h2 class="text-2xl md:text-3xl font-playful font-extrabold">Every Big Journey Begins With a Little Spark.</h2>
+      <p class="mt-3 text-gray-500">Discover a joyful early learning experience designed to help little minds explore, create and grow.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4">
+        <a href="admissions.html" class="px-6 py-3 bg-spark-orange text-white font-bold rounded-full shadow-md hover:bg-orange-500 transition focus-ring">Enquire About Admission</a>
+        <a href="tel:09790228201" class="px-6 py-3 bg-gray-100 text-gray-800 font-bold rounded-full hover:bg-gray-200 transition focus-ring"><i class="fas fa-phone mr-2"></i>Call Kiddos Spark</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-[#2D3A4B] text-white pt-16 pb-8 footer-wave">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-10 h-10 bg-gradient-to-br from-spark-yellow to-spark-orange rounded-xl flex items-center justify-center"><i class="fas fa-star text-white"></i></span>
+            <span class="font-playful font-bold text-xl">Kiddos Spark</span>
+          </div>
+          <p class="text-gray-300 text-sm leading-relaxed">A joyful playschool in Salem where little minds begin to shine. Play-based learning in a safe, caring environment.</p>
+        </div>
+        <div>
+          <h4 class="font-playful font-bold text-lg mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li><a href="index.html" class="hover:text-spark-yellow transition focus-ring">Home</a></li>
+            <li><a href="about.html" class="hover:text-spark-yellow transition focus-ring">About</a></li>
+            <li><a href="programs.html" class="hover:text-spark-yellow transition focus-ring">Programs</a></li>
+            <li><a href="activities.html" class="hover:text-spark-yellow transition focus-ring">Activities</a></li>
+            <li><a href="gallery.html" class="hover:text-spark-yellow transition focus-ring">Gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-playful font-bold text-lg mb-4">Programs</h4>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li><a href="programs.html" class="hover:text-spark-yellow transition focus-ring">Play Group</a></li>
+            <li><a href="programs.html" class="hover:text-spark-yellow transition focus-ring">Nursery</a></li>
+            <li><a href="programs.html" class="hover:text-spark-yellow transition focus-ring">LKG</a></li>
+            <li><a href="programs.html" class="hover:text-spark-yellow transition focus-ring">UKG</a></li>
+            <li><a href="fees.html" class="hover:text-spark-yellow transition focus-ring">Fees</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-playful font-bold text-lg mb-4">Contact</h4>
+          <ul class="space-y-3 text-sm text-gray-300">
+            <li class="flex items-start gap-2"><i class="fas fa-location-dot mt-1 text-spark-yellow"></i><span>69, Sevi Gounder St, Kannankurichi, Johnsonpet, Salem, Tamil Nadu 636008</span></li>
+            <li class="flex items-center gap-2"><i class="fas fa-phone text-spark-yellow"></i><a href="tel:09790228201" class="hover:text-spark-yellow transition focus-ring">097902 28201</a></li>
+          </ul>
+          <div class="mt-4 flex gap-3">
+            <span class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center text-gray-400 text-xs cursor-default" title="Instagram — Coming Soon"><i class="fab fa-instagram"></i></span>
+            <span class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center text-gray-400 text-xs cursor-default" title="Facebook — Coming Soon"><i class="fab fa-facebook-f"></i></span>
+            <span class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center text-gray-400 text-xs cursor-default" title="YouTube — Coming Soon"><i class="fab fa-youtube"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-xs text-gray-400">© 2025 Kiddos Spark. All rights reserved.</p>
+        <p class="text-xs text-gray-500">Website concept prepared as a demonstration for Kiddos Spark.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== FLOATING WHATSAPP ==================== -->
+  <a href="https://wa.me/919790228201?text=Hello%20Kiddos%20Spark%2C%20I%27d%20like%20to%20enquire%20about%20admissions." target="_blank" rel="noopener" class="float-wa w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition transform hover:scale-110 focus-ring" aria-label="Chat with Kiddos Spark on WhatsApp">
+    <i class="fab fa-whatsapp text-white text-2xl"></i>
+  </a>
+
+  <!-- ==================== MOBILE STICKY CTA BAR ==================== -->
+  <div class="mobile-cta-bar">
+    <a href="tel:09790228201" aria-label="Call Kiddos Spark"><i class="fas fa-phone"></i><span>Call</span></a>
+    <a href="https://wa.me/919790228201" target="_blank" rel="noopener" aria-label="WhatsApp Kiddos Spark"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+    <a href="admissions.html" aria-label="Enquire for admission"><i class="fas fa-pen-to-square"></i><span>Enquire</span></a>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // ===== SCHOOL CONFIG (centralized) =====
+    const SCHOOL_CONFIG = {
+      name: "Kiddos Spark",
+      phone: "097902 28201",
+      phoneRaw: "09790228201",
+      whatsapp: "919790228201",
+      address: "69, Sevi Gounder St, Kannankurichi, Johnsonpet, Salem, Tamil Nadu 636008",
+      demoMode: true
+    };
+
+    // ===== MOBILE MENU =====
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        const expanded = menuBtn.getAttribute('aria-expanded') === 'true' ? false : true;
+        menuBtn.setAttribute('aria-expanded', expanded);
+        mobileMenu.classList.toggle('hidden');
+        menuBtn.innerHTML = expanded ? '<i class="fas fa-times text-2xl text-gray-700"></i>' : '<i class="fas fa-bars text-2xl text-gray-700"></i>';
+      });
+      // Close menu on link click
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          menuBtn.innerHTML = '<i class="fas fa-bars text-2xl text-gray-700"></i>';
+        });
+      });
+    }
+
+    // ===== NAVBAR SCROLL EFFECT =====
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          navbar.classList.add('nav-scrolled');
+        } else {
+          navbar.classList.remove('nav-scrolled');
+        }
+      });
+    }
+
+    // ===== SCROLL REVEAL =====
+    const revealElements = document.querySelectorAll('.reveal, .reveal-scale');
+    if (revealElements.length) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      revealElements.forEach(el => revealObserver.observe(el));
+    }
+
+    // ===== GALLERY LIGHTBOX (only on gallery.html, but safe to include) =====
+    // This will be handled by gallery.js on that page.
+
+    // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ===== ACTIVE NAV HIGHLIGHT (simple) =====
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('#navbar a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPath) {
+        link.classList.add('bg-spark-yellow/30', 'text-spark-orange');
+      }
+    });
+
+    console.log('Kiddos Spark – Premium Playschool Website loaded.');
+  </script>
+</body>
+</html>
